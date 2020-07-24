@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
+    
     <script type="text/javascript">
 
       function callJavascriptFromObjectiveC() {
@@ -69,27 +70,20 @@
 <div id="popup" class="leftmenu">
     <ul>
         <li>
-            <button style="hegiht =  onclick="callMessageCallHandlerFromJavascript();">자바스크립에서 호출한 네이티브 메세지 함수 입니다.</button>
+            <a id = "closeid" class="close" >&times;</a>
         </li>
-        
         <li>
-            <button onclick="callLoginHandlerFromJavascript();">로그인</button>
+            <a href="#">Home</a>
+            <a href="javascript:void(0);" onclick="callFunction(callMessageCallHandlerFromJavascript);">call native func</a>
         </li>
-        
         <li>
-            <button onclick="callExitHandlerFromJavascript();">종료</button>
+            <a href="#">About</a>
         </li>
-        
         <li>
-            <button onclick="callAlertListHandlerFromJavascript();">PUSH 알림 목록 </button>
+            <a href="#">Categories</a>
         </li>
-        
         <li>
-            <button onclick="callSearchFileHandlerFromJavascript();">파일전송</button>
-        </li>
-        
-        <li>
-            <button onclick="callGetOtpHandlerFromJavascript();">OTP생성</button>
+            <a href="#">Sale</a>
         </li>
     </ul>
 </div>
