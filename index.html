@@ -49,6 +49,14 @@
           alert(e);
         }
       }
+    
+    function callGetOtpHandlerFromJavascript(){
+      try{
+        webkit.messageHandlers.getOtpHandler.postMessage("getOtpHandler test");
+      }catch(e){
+        alert(e);
+      }
+    }
 
     </script>
    </head>
@@ -56,7 +64,7 @@
     <div id="container">
       <h3>Call Objective-C from javascript</h3>
 
-      <button onclick="callMessageCallHandlerFromJavascript();">자바스크립에서 호출한 네이티브 메세지 함수 입니다.</button></br></br>
+      <button style="hegiht =  onclick="callMessageCallHandlerFromJavascript();">자바스크립에서 호출한 네이티브 메세지 함수 입니다.</button></br></br>
 
       <button onclick="callLoginHandlerFromJavascript();">로그인</button></br></br>
 
@@ -65,6 +73,8 @@
       <button onclick="callAlertListHandlerFromJavascript();">PUSH 알림 목록 </button></br></br>
 
       <button onclick="callSearchFileHandlerFromJavascript();">파일전송</button></br></br>
+      
+      <button onclick="callGetOtpHandlerFromJavascript();">OTP생성</button></br></br>
      </div>
    </body>
 </html>
