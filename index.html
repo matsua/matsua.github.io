@@ -78,6 +78,13 @@
           alert(e);
         }
     }
+    function callAppIronHandlerFromJavascript(){
+        try{
+          webkit.messageHandlers.callAppIron.postMessage("ccallAppIronHandler test");
+        }catch(e){
+          alert(e);
+        }
+    }
 
     </script>
 </head>
@@ -99,6 +106,10 @@
         
         <li>
             <a href="javascript:void(0);" onclick="callTransKeyHandlerFromJavascript();">TransKey</a>
+        </li>
+        
+        <li>
+            <a href="javascript:void(0);" onclick="callAppIronHandlerFromJavascript();">AppIron</a>
         </li>
         
         <li>
