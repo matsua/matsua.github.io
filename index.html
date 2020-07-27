@@ -62,6 +62,22 @@
         alert(e);
       }
     }
+        
+    function callmVaccineHandlerFromJavascript(){
+        try{
+          webkit.messageHandlers.callmVaccine.postMessage("callmVaccineHandler test");
+        }catch(e){
+          alert(e);
+        }
+    }
+        
+    function callTransKeyHandlerFromJavascript(){
+        try{
+          webkit.messageHandlers.callTransKey.postMessage("callTransKeyHandler test");
+        }catch(e){
+          alert(e);
+        }
+    }
 
     </script>
 </head>
@@ -75,6 +91,14 @@
         
         <li>
             <a href="javascript:void(0);" onclick="callMessageCallHandlerFromJavascript();">call native</a>
+        </li>
+        
+        <li>
+            <a href="javascript:void(0);" onclick="callmVaccineHandlerFromJavascript();">mVaccine</a>
+        </li>
+        
+        <li>
+            <a href="javascript:void(0);" onclick="callTransKeyHandlerFromJavascript();">TransKey</a>
         </li>
         
         <li>
