@@ -87,7 +87,7 @@
     }
     function callImageViewHandlerFromJavascript(){
         try{
-          webkit.messageHandlers.ImageView.postMessage("callImageViewHandler test");
+          webkit.messageHandlers.callImageView.postMessage("callImageViewHandler test");
         }catch(e){
           alert(e);
         }
