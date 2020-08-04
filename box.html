@@ -96,7 +96,14 @@
         }catch(e){
           alert(e);
         }
-    }    
+    }
+    function callbackTest(){
+        try{
+            var result = window.Android.callbackTest();
+        }catch(e){
+          alert(e);
+        }
+    }   
 
     </script>
 </head>
@@ -142,6 +149,10 @@
         
         <li>
             <a href="javascript:void(0);" onclick="callExitHandlerFromJavascript();">종료</a>
+        </li>
+        
+        <li>
+            <a href="javascript:void(0);" onclick="callbackTest();">callback</a>
         </li>
     </ul>
     
