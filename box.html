@@ -27,7 +27,7 @@
       function callLoginHandlerFromJavascript(){
         try{
           //webkit.messageHandlers.loginHandler.postMessage("loginHandler test");
-          window.Android.exit();
+          window.Android.showToast( "callbackHandler test" );
         }catch(e){
           alert(e);
         }
@@ -36,7 +36,7 @@
       function callExitHandlerFromJavascript(){
         try{
           //webkit.messageHandlers.exitHandler.postMessage("exitHandler test");
-          window.Android.showToast( "callbackHandler test" );
+            window.Android.exit();
         }catch(e){
           alert(e);
         }
