@@ -1,9 +1,14 @@
-<html>
-  <head>
-  <meta charset="utf-8"/>
-  <meta name = "viewport" content = "width = device-width"/>
-
-  <title>Hybrid App</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+    
     <script type="text/javascript">
 
       function callJavascriptFromObjectiveC() {
@@ -12,7 +17,8 @@
 
       function callMessageCallHandlerFromJavascript(){
         try{
-          webkit.messageHandlers.callbackHandler.postMessage("callbackHandler test");
+          //webkit.messageHandlers.callbackHandler.postMessage("callbackHandler test");
+          window.Android.showToast( "callbackHandler test" );
         }catch(e){
           alert(e);
         }
@@ -20,7 +26,8 @@
 
       function callLoginHandlerFromJavascript(){
         try{
-          webkit.messageHandlers.loginHandler.postMessage("loginHandler test");
+          //webkit.messageHandlers.loginHandler.postMessage("loginHandler test");
+          window.Android.exit();
         }catch(e){
           alert(e);
         }
@@ -28,7 +35,8 @@
 
       function callExitHandlerFromJavascript(){
         try{
-          webkit.messageHandlers.exitHandler.postMessage("exitHandler test");
+          //webkit.messageHandlers.exitHandler.postMessage("exitHandler test");
+          window.Android.showToast( "callbackHandler test" );
         }catch(e){
           alert(e);
         }
@@ -36,7 +44,7 @@
 
       function callAlertListHandlerFromJavascript(){
         try{
-          webkit.messageHandlers.alertListHandler.postMessage("alertListHandler test");
+          //webkit.messageHandlers.alertListHandler.postMessage("alertListHandler test");
         }catch(e){
           alert(e);
         }
@@ -44,7 +52,7 @@
 
       function callSearchFileHandlerFromJavascript(){
         try{
-          webkit.messageHandlers.searchFileHandler.postMessage("searchFileHandler test");
+          //webkit.messageHandlers.searchFileHandler.postMessage("searchFileHandler test");
         }catch(e){
           alert(e);
         }
@@ -52,30 +60,102 @@
     
     function callGetOtpHandlerFromJavascript(){
       try{
-        webkit.messageHandlers.getOtpHandler.postMessage("getOtpHandler test");
+        //webkit.messageHandlers.getOtpHandler.postMessage("getOtpHandler test");
       }catch(e){
         alert(e);
       }
     }
+        
+    function callmVaccineHandlerFromJavascript(){
+        try{
+          //webkit.messageHandlers.callmVaccine.postMessage("callmVaccineHandler test");
+        }catch(e){
+          alert(e);
+        }
+    }
+        
+    function callTransKeyHandlerFromJavascript(){
+        try{
+          //webkit.messageHandlers.callTransKey.postMessage("callTransKeyHandler test");
+        }catch(e){
+          alert(e);
+        }
+    }
+    function callAppIronHandlerFromJavascript(){
+        try{
+          //webkit.messageHandlers.callAppIron.postMessage("callAppIronHandler test");
+        }catch(e){
+          alert(e);
+        }
+    }
+    function callImageViewHandlerFromJavascript(){
+        try{
+          //webkit.messageHandlers.callImageView.postMessage("callImageViewHandler test");
+        }catch(e){
+          alert(e);
+        }
+    }    
 
     </script>
-   </head>
-   <body>
-    <div id="container">
-      <h3>Call Objective-C from javascript</h3>
+</head>
+<body>
+    
+<div id="popup" class="leftmenu">
+    <ul>
+        <li>
+            <a id = "closeid" class="close" >&times;</a>
+        </li>
+        
+        <li>
+            <a href="javascript:void(0);" onclick="callMessageCallHandlerFromJavascript();">call native</a>
+        </li>
+        
+        <li>
+            <a href="javascript:void(0);" onclick="callmVaccineHandlerFromJavascript();">mVaccine</a>
+        </li>
+        
+        <li>
+            <a href="javascript:void(0);" onclick="callTransKeyHandlerFromJavascript();">TransKey</a>
+        </li>
+        
+        <li>
+            <a href="javascript:void(0);" onclick="callAppIronHandlerFromJavascript();">AppIron</a>
+        </li>
+        
+        <li>
+            <a href="javascript:void(0);" onclick="callAlertListHandlerFromJavascript();">PUSH 알림</a>
+        </li>
+        
+        <li>
+            <a href="javascript:void(0);" onclick="callSearchFileHandlerFromJavascript();">파일전송</a>
+        </li>
+        
+        <li>
+            <a href="javascript:void(0);" onclick="callGetOtpHandlerFromJavascript();">OTP생성</a>
+        </li>
+        
+        <li>
+            <a href="javascript:void(0);" onclick="callImageViewHandlerFromJavascript();">이미지보기</a>
+        </li>
+        
+        <li>
+            <a href="javascript:void(0);" onclick="callExitHandlerFromJavascript();">종료</a>
+        </li>
+    </ul>
+    
+    
+</div>
 
-      <button style="hegiht =  onclick="callMessageCallHandlerFromJavascript();">자바스크립에서 호출한 네이티브 메세지 함수 입니다.</button></br></br>
 
-      <button onclick="callLoginHandlerFromJavascript();">로그인</button></br></br>
 
-      <button onclick="callExitHandlerFromJavascript();">종료</button></br></br>
+<span class="iconmenu"><i id="tt" class="fas fa-bars"></i> Menu</span>
 
-      <button onclick="callAlertListHandlerFromJavascript();">PUSH 알림 목록 </button></br></br>
 
-      <button onclick="callSearchFileHandlerFromJavascript();">파일전송</button></br></br>
-      
-      <button onclick="callGetOtpHandlerFromJavascript();">OTP생성</button></br></br>
-     </div>
-   </body>
+
+
+
+
+
+    <script src="js/script.js"></script>
+</body>
 </html>
-
