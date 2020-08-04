@@ -61,7 +61,8 @@
     function callGetOtpHandlerFromJavascript(){
       try{
         //webkit.messageHandlers.getOtpHandler.postMessage("getOtpHandler test");
-          window.Android.getOtid();
+          var otp = window.Android.getOtid();
+          alert(otp);
       }catch(e){
         alert(e);
       }
