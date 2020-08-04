@@ -80,14 +80,14 @@
     }
     function callAppIronHandlerFromJavascript(){
         try{
-          webkit.messageHandlers.callAppIron.postMessage("ccallAppIronHandler test");
+          webkit.messageHandlers.callAppIron.postMessage("callAppIronHandler test");
         }catch(e){
           alert(e);
         }
     }
     function callImageViewHandlerFromJavascript(){
         try{
-          webkit.messageHandlers.ImageView.postMessage("ccallImageViewHandler test");
+          webkit.messageHandlers.ImageView.postMessage("callImageViewHandler test");
         }catch(e){
           alert(e);
         }
