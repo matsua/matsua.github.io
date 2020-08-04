@@ -85,6 +85,13 @@
           alert(e);
         }
     }
+    function callImageViewHandlerFromJavascript(){
+        try{
+          webkit.messageHandlers.ImageView.postMessage("ccallImageViewHandler test");
+        }catch(e){
+          alert(e);
+        }
+    }    
 
     </script>
 </head>
@@ -122,6 +129,10 @@
         
         <li>
             <a href="javascript:void(0);" onclick="callGetOtpHandlerFromJavascript();">OTP생성</a>
+        </li>
+        
+        <li>
+            <a href="javascript:void(0);" onclick="callImageViewHandlerFromJavascript();">이미지보기</a>
         </li>
         
         <li>
