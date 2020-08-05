@@ -11,95 +11,57 @@
     
     <script type="text/javascript">
 
-      function callJavascriptFromObjectiveC(test) {
-          var str = JSON.stringify(test);
-          alert(str);
-      }
+  function callToast(messege) {
+      window.Android.showToast(messege);
+  }
 
-      function callMessageCallHandlerFromJavascript(){
-        try{
-          //webkit.messageHandlers.callbackHandler.postMessage("callbackHandler test");
-          window.Android.showToast( "callbackHandler test" );
-        }catch(e){
-          alert(e);
-        }
-      }
+  function callDialog(messege){
+    window.Android.showDialog(messege);
+  }
 
-      function callLoginHandlerFromJavascript(){
-        try{
-          //webkit.messageHandlers.loginHandler.postMessage("loginHandler test");
-          window.Android.showToast( "callbackHandler test" );
-        }catch(e){
-          alert(e);
-        }
-      }
+  function callMvaccineFull(){
+    window.Android.mVaccineFull();
+  }
 
-      function callExitHandlerFromJavascript(){
-        try{
-          //webkit.messageHandlers.exitHandler.postMessage("exitHandler test");
-            window.Android.exit();
-        }catch(e){
-          alert(e);
-        }
-      }
+  function callMvaccineMini(){
+    window.Android.mVaccineMini();
+  }
 
-      function callAlertListHandlerFromJavascript(){
-        try{
-          //webkit.messageHandlers.alertListHandler.postMessage("alertListHandler test");
-        }catch(e){
-          alert(e);
-        }
-      }
+  function callAppIon(){
+    window.Android.appIon();
+  }
 
-      function callSearchFileHandlerFromJavascript(){
-        try{
-          //webkit.messageHandlers.searchFileHandler.postMessage("searchFileHandler test");
-        }catch(e){
-          alert(e);
-        }
-      }
+  function callOneGuard(){
+    window.Android.oneGuard();
+  }
     
-    function callGetOtpHandlerFromJavascript(){
-      try{
-        //webkit.messageHandlers.getOtpHandler.postMessage("getOtpHandler test");
-          window.Android.getOtid();
-      }catch(e){
-        alert(e);
-      }
+  function callOtid(){
+    window.Android.getOtid();
+  }
+        
+    function callTransKeyBoard(){
+      window.Android.callTransKeyBoard();
     }
         
-    function callmVaccineHandlerFromJavascript(){
-        try{
-          //webkit.messageHandlers.callmVaccine.postMessage("callmVaccineHandler test");
-        }catch(e){
-          alert(e);
-        }
+    function callFileSearch(){
+      window.Android.callFileSearch();
     }
         
-    function callTransKeyHandlerFromJavascript(){
-        try{
-          //webkit.messageHandlers.callTransKey.postMessage("callTransKeyHandler test");
-        }catch(e){
-          alert(e);
-        }
+    function callNotiList(){
+      window.Android.callNotiList();
     }
-    function callAppIronHandlerFromJavascript(){
-        try{
-          //webkit.messageHandlers.callAppIron.postMessage("callAppIronHandler test");
-        }catch(e){
-          alert(e);
-        }
+        
+    function callImageViewer(){
+      window.Android.callImageViewer();
     }
-    function callImageViewHandlerFromJavascript(){
-        try{
-          //webkit.messageHandlers.callImageView.postMessage("callImageViewHandler test");
-        }catch(e){
-          alert(e);
-        }
-    }
+        
+    function callExit(){
+        window.Android.exit();
+    }  
+        
     function callbackTest(){
         alert('callbackTest');
-    }   
+    }  
 
     </script>
 </head>
@@ -112,39 +74,51 @@
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="callMessageCallHandlerFromJavascript();">call native</a>
+            <a href="javascript:void(0);" onclick="callToast();">call Toast</a>
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="callmVaccineHandlerFromJavascript();">mVaccine</a>
+            <a href="javascript:void(0);" onclick="callDialog();">call Dialog</a>
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="callTransKeyHandlerFromJavascript();">TransKey</a>
+            <a href="javascript:void(0);" onclick="callMvaccineFull();">call mVaccineFull</a>
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="callAppIronHandlerFromJavascript();">AppIron</a>
+            <a href="javascript:void(0);" onclick="callMvaccineMini();">call mVaccineMini</a>
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="callAlertListHandlerFromJavascript();">PUSH 알림</a>
+            <a href="javascript:void(0);" onclick="callAppIon();">call AppIron</a>
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="callSearchFileHandlerFromJavascript();">파일전송</a>
+            <a href="javascript:void(0);" onclick="callOneGuard();">call OneGuard</a>
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="callGetOtpHandlerFromJavascript();">OTP생성</a>
+            <a href="javascript:void(0);" onclick="callOtid();">call Otid</a>
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="callImageViewHandlerFromJavascript();">이미지보기</a>
+            <a href="javascript:void(0);" onclick="callTransKeyBoard();">call TransKeyBoard</a>
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="callExitHandlerFromJavascript();">종료</a>
+            <a href="javascript:void(0);" onclick="callFileSearch();">call FileSearch</a>
+        </li>
+        
+        <li>
+            <a href="javascript:void(0);" onclick="callNotiList();">call NotiList</a>
+        </li>
+        
+        <li>
+            <a href="javascript:void(0);" onclick="callImageViewer();">call ImageViewer</a>
+        </li>
+        
+        <li>
+            <a href="javascript:void(0);" onclick="callExit();">종료</a>
         </li>
         
         <li>
