@@ -12,7 +12,8 @@
     <script type="text/javascript">
 
       function callJavascriptFromObjectiveC(test) {
-        alert(test);
+          var str = JSON.stringify(test);
+          alert(str);
       }
 
       function callMessageCallHandlerFromJavascript(){
