@@ -61,8 +61,7 @@
     function callGetOtpHandlerFromJavascript(){
       try{
         //webkit.messageHandlers.getOtpHandler.postMessage("getOtpHandler test");
-          //window.Android.getOtid();
-          alert(window.Android.getOtid());
+          window.Android.getOtid();
       }catch(e){
         alert(e);
       }
@@ -98,12 +97,8 @@
         }
     }
     function callbackTest(){
-        try{
-            var result = window.Android.callbackTest();
-            alert(result);
-        }catch(e){
-          alert(e);
-        }
+        var result = window.Android.callbackTest();
+        alert(result);
     }   
 
     </script>
