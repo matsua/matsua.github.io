@@ -12,10 +12,12 @@
     <script type="text/javascript">
 
   function callToast(messege) {
+      alert('fuc' + messege);
       window.Android.showToast(messege);
   }
 
   function callDialog(messege){
+      alert('fuc' + messege);
     window.Android.showDialog(messege);
   }
 
@@ -74,11 +76,11 @@
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="callToast("CALL FROM WEB");">call Toast</a>
+            <a href="javascript:void(0);" onclick="callToast('CALL FROM WEB');">call Toast</a>
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="callDialog("CALL FROM WEB");">call Dialog</a>
+            <a href="javascript:void(0);" onclick="callDialog('CALL FROM WEB');">call Dialog</a>
         </li>
         
         <li>
