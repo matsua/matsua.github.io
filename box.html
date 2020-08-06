@@ -64,7 +64,15 @@
     }  
         
     function callbackTest(){
-        window.Android.test();
+        //window.Android.test();
+        var funcTest = { 
+            name1 : "AAA", 
+            name2 : "BBB", 
+            callFnTest: function() { 
+                alert(this.name1 + ", " + this.name2);
+            } 
+        };
+
     }  
 
     </script>
@@ -126,7 +134,7 @@
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="javascript:otidFromApp('callback');">callback</a>
+            <a href="javascript:void(0);" onclick="javascript:callFnTest();">callback</a>
         </li>
     </ul>
     
