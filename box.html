@@ -80,12 +80,9 @@
         alert('funcTestTemp');
     }
         
-   this.f_fromAppCallback = function(param){
-        //var data = {procId: "otid", sValue: "12345678"}; 
-        //var jData = JSON.stringify(data);
-        //alert(jData);
-        var otid = param[0].sValue;
-        alert(otid);
+   this.f_fromAppCallback = function(appValue){
+        var procId = String(appValue.procId);
+       alert(procId);
    }
     </script>
 </head>
