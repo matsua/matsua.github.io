@@ -81,7 +81,8 @@
     }
         
    this.f_fromAppCallback = function(param){
-       alert(param);
+       var param = JSON.stringify(param);
+       alert(param[0].procId);
    }
         
   
