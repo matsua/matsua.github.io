@@ -81,8 +81,8 @@
     }
         
    this.f_fromAppCallback = function(appValue){
-        var procId = String(appValue.procId);
-       alert(procId);
+       var obj = JSON.parse(appValue);
+       alert(obj.sValue)
    }
     </script>
 </head>
