@@ -56,6 +56,10 @@
       window.Android.callTransKeyBoardDialog("ctrlview", "alpha", "text");
     }
         
+    function callTransKeyBoardCtl(){
+      window.Android.callTransKeyBoardDialog();
+    }
+        
     function callFileSearch(){
       window.Android.callFileSearch();
     }
@@ -144,6 +148,10 @@
         
         <li>
             <a href="javascript:void(0);" onclick="callTransKeyBoardDialog();">call TransKeyBoardCtrl</a>
+        </li>
+        
+        <li>
+            <a href="javascript:void(0);" onclick="callTransKeyBoardCtl();">call callTransKeyBoardCtl</a>
         </li>
         
         <li>
