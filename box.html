@@ -104,6 +104,10 @@
    af_appInterface = function(appData){
        alert(appData);
    }
+        
+   function callTest(){
+        window.Android.callTest();
+    }       
     </script>
 </head>
 <body>
@@ -115,7 +119,7 @@
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="callToast('CALL FROM WEB');">call Toast</a>
+            <a href="javascript:void(0);" onclick="callTest();">테스트</a>
         </li>
         
         <li>
