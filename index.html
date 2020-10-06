@@ -25,7 +25,8 @@
     }
         
       af_appInterface = function(appData){
-       alert(appData);
+       var obj = JSON.parse(appData);
+       alert(obj);
       }
 
       function callMessageCallHandlerFromJavascript(){
