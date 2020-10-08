@@ -28,9 +28,10 @@
        alert("af_appInterface_emp");
       }
         
-      af_appInterface = function(appData){
+      function af_appInterface(appData){
+          alert("appData :: " + appData);
           var data = JSON.parse(appData);
-        alert(data);
+          alert("data :: " + data);
       }
 
       function callMessageCallHandlerFromJavascript(){
