@@ -29,9 +29,8 @@
       }
         
       function af_appInterface(appData){
-          alert("appData :: " + appData);
-          //var data = JSON.parse(appData);
-          //lert("data :: " + data);
+          var obj = JSON.parse(appData);
+          alert(obj.sValue)
       }
 
       function callMessageCallHandlerFromJavascript(){
