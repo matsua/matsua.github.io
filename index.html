@@ -97,9 +97,9 @@
           alert(e);
         }
     }
-    function callAppIronHandlerFromJavascript(){
+    function callTransKeyPwd(){
         try{
-          webkit.messageHandlers.callAppIron.postMessage("callAppIronHandler test");
+          webkit.messageHandlers.pwdKeyboard.postMessage("");
         }catch(e){
           alert(e);
         }
@@ -139,7 +139,7 @@
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="callAppIronHandlerFromJavascript();">AppIron</a>
+            <a href="javascript:void(0);" onclick="callTransKeyPwd();">TransKeyPwd</a>
         </li>
         
         <li>
