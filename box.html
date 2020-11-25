@@ -23,97 +23,35 @@
   function callDialog(messege){
     window.Android.showDialog(messege);
   }
-
-  function callMvaccineFull(){
-    window.Android.mVaccineFull();
-  }
-
-  function callMvaccineMini(){
-    window.Android.mVaccineMini();
-  }
-
-  function callAppIon(){
-    window.Android.appIon();
-  }
-
-  function callOneGuard(){
-    window.Android.oneGuard();
-  }
     
   function callOtid(){
     window.Android.getOtid();
   }
         
-  function otidFromApp(otid){
-      alert(otid);
+  function callTransKeyBoardPwd(messege){
+      alert("pwdKeyboard messege");
+    window.Android.pwdKeyboard(messege);
   }
         
-    function callTransKeyBoardFull(){
-      window.Android.callTransKeyBoardFull();
-    }
+  function callTransKeyBoardPwd(){
+      alert("pwdKeyboard");
+    window.Android.pwdKeyboard();
+  }
         
-    function callTransKeyBoardDialog(){
-      window.Android.callTransKeyBoardDialog();
-    }
+  function callTransKeyBoard(messege){
+      alert("transKeyBoard messege");
+    window.Android.callTransKeyBoard(messege);
+  }
         
-    function callTransKeyBoard(messege){
-        alert("otpKeyboard");
-      window.Android.callTransKeyBoard(messege);
-    }
+  function callTransKeyBoard(){
+      alert("transKeyBoard");
+    window.Android.callTransKeyBoard();
+  } 
         
-    function callTransKeyBoardPwd(messege){
-        alert("pwdKeyboard");
-      window.Android.pwdKeyboard(messege);
-    }
-        
-    function callFileSearch(){
-      window.Android.callFileSearch();
-    }
-        
-    function callNotiList(){
-      window.Android.callNotiList();
-    }
-        
-    function callImageViewer(){
-      window.Android.callImageViewer();
-    }
-        
-    function callExit(){
-        window.Android.exit();
-    }  
-        
-    function callbackTest(){
-        window.Android.callTransKeyBoard();
-    }  
-    
-    var funcTest = { 
-        name1 : "AAA", 
-        name2 : "BBB", 
-        callFnTest: function() { 
-            alert(this.name1 + ", " + this.name2);
-        } 
-    };
-    
-    otidFromAppTemp = function(otid){
-        alert(otid);
-    }
-        
-    this.otidFromApp = function(otid){
-        alert(otid);
-    }
-        
-   this.f_fromAppCallback = function(appValue){
-       var obj = JSON.parse(appValue);
-       alert(obj.sValue);
-   }
-        
-   af_appInterface = function(appData){
+   st_appInterface = function(appData){
        alert(appData);
    }
-        
-   function callTest(){
-        window.Android.getGps();
-    }       
+              
     </script>
 </head>
 <body>
@@ -125,72 +63,34 @@
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="callbackTest();">테스트</a>
+            <a href="javascript:void(0);" onclick="callToast('test toast');">callToast</a>
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="callDialog('CALL FROM WEB');">call Dialog</a>
+            <a href="javascript:void(0);" onclick="callDialog('CALL FROM WEB');">callDialog</a>
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="callMvaccineFull();">call mVaccineFull</a>
+            <a href="javascript:void(0);" onclick="callOtid();">callOtid</a>
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="callMvaccineMini();">call mVaccineMini</a>
+            <a href="javascript:void(0);" onclick="callTransKeyBoardPwd('');">callTransKeyBoardPwd value</a>
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="callAppIon();">call AppIron</a>
+            <a href="javascript:void(0);" onclick="callTransKeyBoardPwd();">callTransKeyBoardPwd/a>
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="callOneGuard();">call OneGuard</a>
+            <a href="javascript:void(0);" onclick="callTransKeyBoard('');">callTransKeyBoard value</a>
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="callOtid();">call Otid</a>
+            <a href="javascript:void(0);" onclick="callTransKeyBoard();">callTransKeyBoard</a>
         </li>
         
-        <li>
-            <a href="javascript:void(0);" onclick="callTransKeyBoardFull();">call TransKeyBoardFull</a>
-        </li>
         
-        <li>
-            <a href="javascript:void(0);" onclick="callTransKeyBoardDialog();">call TransKeyBoardCtrl</a>
-        </li>
-        
-        <li>
-            <a href="javascript:void(0);" onclick="callTransKeyBoard("12345678");">call callTransKeyBoard</a>
-        </li>
-        
-        <li>
-            <a href="javascript:void(0);" onclick="callTransKeyBoardPwd("");">call callTransKeyBoardPwd</a>
-        </li>
-        
-        <li>
-            <a href="javascript:void(0);" onclick="callNotiList();">call NotiList</a>
-        </li>
-        
-        <li>
-            <a href="javascript:void(0);" onclick="callImageViewer();">call ImageViewer</a>
-        </li>
-        
-        <li>
-            <a href="javascript:void(0);" onclick="callExit();">종료</a>
-        </li>
-        
-        <li>
-            <a href="javascript:void(0);" onclick="callbackTest();">callback</a>
-        </li>
-        
-        <li>
-            <a href="javascript:void(0);" onclick="javascript:funcTest.callFnTest();">1</a>
-        </li>
-        
-        <li>
-            <a href="javascript:void(0);" onclick="javascript:funcTestTemp();">2</a>
-        </li>
     </ul>
     
     
