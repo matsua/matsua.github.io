@@ -46,7 +46,13 @@
   function callTransKeyBoard(){
       alert("transKeyBoard");
     window.Android.callTransKeyBoard();
-  } 
+  }
+        
+  function callTransKeyBoardTest(){
+      alert("transKeyBoard");
+    window.Android.callTransKeyBoardTest("801205");
+  }
+        
         
    st_appInterface = function(appData){
        alert(appData);
@@ -88,6 +94,10 @@
         
         <li>
             <a href="javascript:void(0);" onclick="callTransKeyBoard();">callTransKeyBoard</a>
+        </li>
+        
+         <li>
+            <a href="javascript:void(0);" onclick="callTransKeyBoard();">callTransKeyBoardTest</a>
         </li>
         
         
