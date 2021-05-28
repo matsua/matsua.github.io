@@ -15,53 +15,17 @@
     <title>Document</title>
     
     <script type="text/javascript">
+      function callToast(messege) {
+          window.Android.showToast(messege);
+      }
 
-  function callToast(messege) {
-      window.Android.showToast(messege);
-  }
+      function callDialog(messege){
+        window.Android.showDialog(messege);
+      }
 
-  function callDialog(messege){
-    window.Android.showDialog(messege);
-  }
-        
- function getCellNo(){
-    window.Android.getCellNo();
- }
-    
-  function callOtid(){
-    window.Android.getOtid();
-  }
-        
-  function callTransKeyBoardPwd(messege){
-      alert("pwdKeyboard messege");
-    window.Android.pwdKeyboard(messege);
-  }
-        
-  function callTransKeyBoardPwd(){
-      alert("pwdKeyboard");
-    window.Android.pwdKeyboard();
-  }
-        
-  function callTransKeyBoard(messege){
-      alert("transKeyBoard messege");
-    window.Android.callTransKeyBoard(messege);
-  }
-        
-  function callTransKeyBoard(){
-      alert("transKeyBoard");
-    window.Android.callTransKeyBoard();
-  }
-        
-  function callTransKeyBoardTest(){
-      alert("transKeyBoard");
-    window.Android.callTransKeyBoardTest("801205");
-  }
-        
-        
-   st_appInterface = function(appData){
-       alert(appData);
-   }
-              
+     function getImage(){
+        window.Android.getImage();
+     }
     </script>
 </head>
 <body>
@@ -81,33 +45,9 @@
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="getCellNo();">callOtid</a>
+            <a href="javascript:void(0);" onclick="getImage();">GetImage</a>
         </li>
-        
-        <li>
-            <a href="javascript:void(0);" onclick="callTransKeyBoardPwd("1111");">callTransKeyBoardPwd value</a>
-        </li>
-        
-        <li>
-            <a href="javascript:void(0);" onclick="callTransKeyBoardPwd();">callTransKeyBoardPwd</a>
-        </li>
-        
-        <li>
-            <a href="javascript:void(0);" onclick="callTransKeyBoard("2222");">callTransKeyBoard value</a>
-        </li>
-        
-        <li>
-            <a href="javascript:void(0);" onclick="callTransKeyBoard();">callTransKeyBoard</a>
-        </li>
-        
-         <li>
-            <a href="javascript:void(0);" onclick="callTransKeyBoard();">callTransKeyBoardTest</a>
-        </li>
-        
-        
     </ul>
-    
-    
 </div>
 
 
