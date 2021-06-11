@@ -20,7 +20,11 @@
       }
 
      function getImage(){
-        window.Android.getImage();
+        window.JsInterfaceRp.callOpenGallery();
+     }
+        
+     function getCamera(){
+        window.JsInterfaceRp.callOpenCamera();
      }
         
      function st_appInterface(appData){
@@ -45,7 +49,11 @@
         </li>
         
         <li>
-            <a href="javascript:void(0);" onclick="getImage();">GetImage</a>
+            <a href="javascript:void(0);" onclick="getImage();">갤러리오픈</a>
+        </li>
+        
+        <li>
+            <a href="javascript:void(0);" onclick="getCamera();">카메라오픈</a>
         </li>
     </ul>
 </div>
