@@ -26,6 +26,14 @@
      function getCamera(){
         window.JsInterfaceRp.callOpenCamera();
      }
+     
+     function setData(){
+        window.JsInterfaceRp.callSetUser("user_id","test1");
+     }
+        
+     function getData(){
+        window.JsInterfaceRp.callGetUser("user_id");
+     }
         
      function st_appInterface(appData){
           alert(appData);
@@ -54,6 +62,12 @@
         
         <li>
             <a href="javascript:void(0);" onclick="getCamera();">카메라오픈</a>
+        </li>
+        <li>
+            <a href="javascript:void(0);" onclick="setData();">encrypt저장</a>
+        </li>
+        <li>
+            <a href="javascript:void(0);" onclick="getData();">decrypt호출</a>
         </li>
     </ul>
 </div>
