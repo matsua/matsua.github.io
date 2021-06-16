@@ -37,28 +37,28 @@ body{
 
 .leftmenu .close{
     position: absolute;
-  top: 0px;
-  margin-left: 150px;
-  font-size: 35px;
+    top: 0px;
+    margin-left: 150px;
+    font-size: 35px;
 }
 
 .leftmenu .close:hover{
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .iconmenu{
-  font-size:25px;
-  cursor:pointer;
-  color: orange;
-  margin-left: 41px;
-  font-family: 'Roboto', sans-serif;
+    font-size:25px;
+    cursor:pointer;
+    color: orange;
+    margin-left: 41px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .iconmenu:hover{
-  color: #FF2200;
+    color: #FF2200;
 }
 
 .fas:hover{
-  transform:  scale(1.4,1.4);
-  transition: 1s;
+    transform:  scale(1.4,1.4);
+    transition: 1s;
 }
