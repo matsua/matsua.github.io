@@ -1,70 +1,72 @@
 <!DOCTYPE HTML PUBLIC"-//W3C//DTD HTML4.01 Transitional///EN" "http://www.w3.org/TR.html4/loose.dtd">
 <html>
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta http-equiv="content-type" content="text/html:charset=UTF-8">
-    <meta name="viewport" content="user=scalable=1, initial-scale=1.0, width=device-width, target-densitydpi=device-dpi">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta http-equiv="content-type" content="text/html:charset=UTF-8">
+        <meta name="viewport" content="user=scalable=1, initial-scale=1.0, width=device-width, target-densitydpi=device-dpi">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <title>JSInterfaceTest</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css">
+        <title>JSInterfaceTest</title>
+
+        <script type="text/javascript">
+          function callToast(messege) {
+              window.JsInterfaceRp.showToast(messege);
+          }
+
+          function callDialog(messege){
+            window.JsInterfaceRp.showDialog(messege);
+          }
+
+         function getImage(){
+            window.JsInterfaceRp.callOpenGallary();
+         }
+
+         function getCamera(){
+            window.JsInterfaceRp.callOpenCamera();
+         }
+
+         function setData(){
+            window.JsInterfaceRp.callSetUser("user_id","test1");
+         }
+
+         function getData(){
+            window.JsInterfaceRp.callGetUser("user_id");
+         }
+
+         function st_appInterface(appData){
+              alert(appData);
+          }
+        </script>
+    </head>
     
-    <script type="text/javascript">
-      function callToast(messege) {
-          window.JsInterfaceRp.showToast(messege);
-      }
+    <body>
+        <div id="popup" class="leftmenu">
+            <ul>
+                <li><a id = "closeid" class="close" >&times;</a></li>
+                <li><a href="javascript:void(0);" onclick="callToast('test toast form webPage');">callToast</a></li>
+                <li><a href="javascript:void(0);" onclick="callDialog('Dialog messge from webPage');">callDialog</a></li>
+                <li><a href="javascript:void(0);" onclick="getImage();">갤러리오픈</a></li>
+                <li><a href="javascript:void(0);" onclick="getCamera();">카메라오픈</a></li>
+                <li><a href="javascript:void(0);" onclick="setData();">encrypt저장</a></li>
+                <li><a href="javascript:void(0);" onclick="getData();">decrypt호출</a></li>
+                <li><input type="number" style="background-color:transparent;color:#FFFFFF"></input></li>
+                <li><input type="text"   style="background-color:transparent;color:#FFFFFF"></input></li>
+            </ul>
 
-      function callDialog(messege){
-        window.JsInterfaceRp.showDialog(messege);
-      }
+        </div>
 
-     function getImage(){
-        window.JsInterfaceRp.callOpenGallary();
-     }
+        <span class="iconmenu">
+            <i id="tt" class="fas fa-bars"></i> Menu</span>
+            
+        <div id="contents" class="leftmenu">
+        </div>
         
-     function getCamera(){
-        window.JsInterfaceRp.callOpenCamera();
-     }
-     
-     function setData(){
-        window.JsInterfaceRp.callSetUser("user_id","test1");
-     }
-        
-     function getData(){
-        window.JsInterfaceRp.callGetUser("user_id");
-     }
-        
-     function st_appInterface(appData){
-          alert(appData);
-      }
-    </script>
-</head>
-<body>
-        
-<div id="popup" class="leftmenu">
-    <ul>
-        <li><a id = "closeid" class="close" >&times;</a></li>
-        <li><a href="javascript:void(0);" onclick="callToast('test toast form webPage');">callToast</a></li>
-        <li><a href="javascript:void(0);" onclick="callDialog('Dialog messge from webPage');">callDialog</a></li>
-        <li><a href="javascript:void(0);" onclick="getImage();">갤러리오픈</a></li>
-        <li><a href="javascript:void(0);" onclick="getCamera();">카메라오픈</a></li>
-        <li><a href="javascript:void(0);" onclick="setData();">encrypt저장</a></li>
-        <li><a href="javascript:void(0);" onclick="getData();">decrypt호출</a></li>
-        <li><input type="number" style="background-color:transparent;color:#FFFFFF"></input></li>
-        <li><input type="text"   style="background-color:transparent;color:#FFFFFF"></input></li>
-    </ul>
-    
-</div>
-
-<span class="iconmenu">
-    <i id="tt" class="fas fa-bars"></i> Menu</span>
 
 
 
 
-
-
- <script src="js/script.js"></script>
-</body>
+        <script src="js/script.js"></script>
+    </body>
 </html>
