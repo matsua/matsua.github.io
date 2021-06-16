@@ -65,8 +65,7 @@ body{
 
 .contents{
     width:800px;
-    height:4000px; 
-    position: fixed;
+    height:400px; 
     top: 100px;
     left: 350px;
     background-color: blue;
