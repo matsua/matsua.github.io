@@ -71,14 +71,10 @@ body{
     background-color: white;
 }
 
-.contents h1{
+.contents ul{
     list-style: none;
     float: left;
     margin-left: 250px;
 }
 
-.contents h2{
-    list-style: none;
-    float: left;
-    margin-left: 250px;
-}
+
