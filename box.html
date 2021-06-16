@@ -12,27 +12,38 @@
 
         <script type="text/javascript">
           function callToast(messege) {
-              document.getElementById("contents").getElementsByTagName('ul')[0].getElementsByTagName('h1')[0].innerHTML = 'Application Forms';
+              document.getElementById("contents").getElementsByTagName('ul')[0].getElementsByTagName('h1')[0].innerHTML = 'callToast';
+              document.getElementById("contents").getElementsByTagName('ul')[0].getElementsByTagName('h2')[0].innerHTML = 'window.JsInterfaceRp.showToast(String messege)';
               window.JsInterfaceRp.showToast(messege);
           }
 
           function callDialog(messege){
+            document.getElementById("contents").getElementsByTagName('ul')[0].getElementsByTagName('h1')[0].innerHTML = 'callDialog';
+            document.getElementById("contents").getElementsByTagName('ul')[0].getElementsByTagName('h2')[0].innerHTML = 'window.JsInterfaceRp.showDialog(String messege)';
             window.JsInterfaceRp.showDialog(messege);
           }
 
          function getImage(){
+            document.getElementById("contents").getElementsByTagName('ul')[0].getElementsByTagName('h1')[0].innerHTML = 'getImage';
+            document.getElementById("contents").getElementsByTagName('ul')[0].getElementsByTagName('h2')[0].innerHTML = 'window.JsInterfaceRp.callOpenGallary()';
             window.JsInterfaceRp.callOpenGallary();
          }
 
          function getCamera(){
+            document.getElementById("contents").getElementsByTagName('ul')[0].getElementsByTagName('h1')[0].innerHTML = 'getCamera';
+            document.getElementById("contents").getElementsByTagName('ul')[0].getElementsByTagName('h2')[0].innerHTML = 'window.JsInterfaceRp.callOpenCamera()';
             window.JsInterfaceRp.callOpenCamera();
          }
 
          function setData(){
+            document.getElementById("contents").getElementsByTagName('ul')[0].getElementsByTagName('h1')[0].innerHTML = 'setData';
+            document.getElementById("contents").getElementsByTagName('ul')[0].getElementsByTagName('h2')[0].innerHTML = 'window.JsInterfaceRp.callSetUser(String obj, String value)';
             window.JsInterfaceRp.callSetUser("user_id","test1");
          }
 
          function getData(){
+            document.getElementById("contents").getElementsByTagName('ul')[0].getElementsByTagName('h1')[0].innerHTML = 'getData';
+            document.getElementById("contents").getElementsByTagName('ul')[0].getElementsByTagName('h2')[0].innerHTML = 'window.JsInterfaceRp.callGetUser(String obj)';
             window.JsInterfaceRp.callGetUser("user_id");
          }
 
@@ -62,8 +73,8 @@
             
         <div id="contents" class="contents">
            <ul>
-                <h1 id="title">ttt</h1>
-                <h2 id="detail">ddd</h2>
+                <h1 id="title"></h1>
+                <h2 id="detail"></h2>
            </ul>
         </div>
         
