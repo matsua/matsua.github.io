@@ -71,7 +71,7 @@ body{
     background-color: white;
 }
 
-.contents ul{
+.contents h1{
     list-style: none;
     float: left;
     margin-left: 250px;
