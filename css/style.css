@@ -64,11 +64,11 @@ body{
 }
 
 .contents{
-    width:800px;
+    width:900px;
     height:400px; 
     top: 100px;
     left: 350px;
-    background-color: blue;
+    background-color: white;
 }
 
 .contents ul{
