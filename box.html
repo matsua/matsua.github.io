@@ -13,8 +13,8 @@
         <script type="text/javascript">
           function callToast(messege) {
               window.JsInterfaceRp.showToast(messege);
-              document.getElementById("title").innerHTML = "callToast"
-              document.getElementById("detail").innerHTML = "window.JsInterfaceRp.showToast(String messege)"
+              
+              document.getElementById("contents").getElementsByTagName('h1')[0].innerHTML = 'Application Forms';
           }
 
           function callDialog(messege){
@@ -62,10 +62,8 @@
         <span class="iconmenu"><i id="tt" class="fas fa-bars"></i> Menu</span>
             
         <div id="contents" class="contents">
-            <ul>
-                <h1 id="title">ttt</h1>
-                <h2 id="detail">ddd</h2>       
-            </ul>
+           <h1 id="title">ttt</h1>
+           <h2 id="detail">ddd</h2>       
         </div>
         
 
