@@ -70,3 +70,9 @@ body{
     left: 350px;
     background-color: blue;
 }
+
+.contents ul{
+    list-style: none;
+    float: left;
+    margin-left: 250px;
+}
