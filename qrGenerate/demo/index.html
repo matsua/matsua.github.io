@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>&lt;qr-code&gt;</title>
+	<title>qrGenerate</title>
 	<style>
 		body {
 			background: #eeeeee;
@@ -34,13 +34,12 @@
 			<input
 				id="data"
 				type="text"
-				value="bla bla blaaaaaaaaaahhh"
+				value="jinsol_prj_testValue"
 				oninput="document.querySelector('qr-code').data = this.value"
 				autofocus
 			/>
 			<br><br>
-			<!-- Using the Web Component -->
-			<qr-code data="bla bla blaaaaaaaaaahhh"></qr-code>
+			<qr-code data="jinsol_prj_testValue"></qr-code>
 		</div>
 		<div class="options">
 			<label for="format">Format</label>
@@ -77,7 +76,6 @@
 			/>
 		</div>
 	</div>
-	<!-- Polyfill and Web Component -->
 	<script src="webcomponents-lite.js"></script>
 	<script src="../dist/index.bundle.js"></script>
 </body>
