@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+<script type="text/javascript" src="../library/json3.min.js?revision=2427fb7"></script>
+<script type="text/javascript" src="../library/iecompatibility.js?revision=2427fb7"></script>
+<script type="text/javascript" src="../library/jquery.min.js?revision=2427fb7"></script>
+<script type="text/javascript" src="../library/json3.min.js?revision=2427fb7"></script>
+
+<script type="text/javascript" src="../vestsign.js?revision=2427fb7"></script>
+
+<SCRIPT language=javascript>
+
+  //var pfxPwd;
+  var option = {
+        encoding: 'base64',
+        charset: 'UTF-8'
+    };
+
+  // 발급기관 정보 필터링 관련 함수
+  var issuerSplit = function (issuer, select) {
+    var issuerLsit = issuer.split(',');
+    var result;
+    for (var i = 0; i < issuerLsit.length; i++) {
+        if (issuerLsit[i].indexOf(select.toUpperCase() + '=') !== -1 || issuerLsit[i].indexOf(select.toLowerCase() + '=') !== -1) {
+          result = issuerLsit[i].split('=');
+          return result[1];
+        }
+      }
+    };  
+
+  // 발급기관 정보 필터링 관련 함수 (CN, O 등등)
+  var getCommonName = function (issuer) {
+    return issuerSplit(issuer, 'CN');
+  };
+
+
+  // pfx 복호화 test용
+  function decryptPFX(newPwd) {
+    if(document.getElementById("pfxValue").value != "" && newPwd != "") {
+      var _pfx = document.getElementById("pfxValue").value;
+      var result = yettie.vest.pki.CertificateSet.fromPFX(yettie.vest.signHelper.decodeString(_pfx, option.encoding), newPwd);
+
+      if (result) {
+        alert('pfx 복호화 성공');
+      } else {
+        alert('pfx 복호화 실패');
+      }
+    } else {
+      alert('pfx 복호화 실패');
+    }
+  }
+  
+  // 가입자명 필터링을 위한 함수 (CN, OU)
+  function parseDnString(dn, isCut) {
+        var temp,
+            result;
+
+        var arr = dn.split(',');
+        for (var index = 0; index < arr.length; index++) {
+            var str = $.trim(arr[index]);
+            if (str.toUpperCase().indexOf('CN') !== -1) {
+                temp = str;
+                result = $.trim(temp.split('=')[1]);
+                break;
+            } else if (str.toUpperCase().indexOf('OU') !== -1) {
+                temp = str;
+                result = $.trim(temp.split('=')[1]);
+                break;
+            }
+            else {
+                result = dn;
+            }
+        }
+
+        if (typeof isCut !== 'undefined' && !isCut) return result;
+        return (result.length > 15) ? result.substring(0, 15) + '...' : result;
+  };
+
+  // 인증서 정보 가져오기 sample 함수
+  function getCertificateInfo(newPwd) {
+    if(document.getElementById('pfxValue').value != "") {
+      var _pfx = document.getElementById("pfxValue").value;
+      if(newPwd != "") {
+        var result = yettie.vest.pki.CertificateSet.fromPFX(yettie.vest.signHelper.decodeString(_pfx, option.encoding), newPwd);
+      } else if(document.getElementById('oldPwd').value != "") {
+        var result = yettie.vest.pki.CertificateSet.fromPFX(yettie.vest.signHelper.decodeString(_pfx, option.encoding), document.getElementById('oldPwd').value);
+      } else {
+        alert("인증서 정보 가져오기 실패");
+      }
+      var resultCert = result.getCertificate();
+      console.log("가입자명 ::: " + parseDnString(resultCert.getSubject()));
+      console.log("발급일 ::: " + resultCert.getValidityFrom('YYYY-MM-DD'));
+      console.log("만료일 ::: " + resultCert.getValidityTo('YYYY-MM-DD'));
+      console.log("OID ::: " + resultCert.getPolicy());
+      // 해당하는 OID의 대한 정책등급은 app/library/policies.js에서 확인하시면 됩니다.
+
+      console.log("발급기관 정보 ::: " + getCommonName(resultCert.getIssuer()));
+      alert("인증서 정보 가져오기 성공");
+    }
+  }
+
+    // 인증서 정보 가져오기 sample 함수
+   function getCertificateInfoFromDer() {
+      // 인증서, 키에서 인증서 정보 가져오는 sample (현재 인증서, 키파일은 고정, Sign창 띄우고 실행)
+      var bytes = {
+        signCert: yettie.vest.signHelper.decodeString("MIIFlDCCBHygAwIBAgIDCBcLMA0GCSqGSIb3DQEBCwUAMFUxCzAJBgNVBAYTAktSMRIwEAYDVQQKDAlTaWduS29yZWExFTATBgNVBAsMDEFjY3JlZGl0ZWRDQTEbMBkGA1UEAwwSU2lnbktvcmVhIFRlc3QgQ0E1MB4XDTE5MDkxOTAyMDcwMFoXDTIwMDkxOTE0NTk1OVowgYMxCzAJBgNVBAYTAktSMRIwEAYDVQQKDAlTaWduS29yZWExGDAWBgNVBAsMD+2FjOyKpO2KuOyXheyihTEYMBYGA1UECwwP7YWM7Iqk7Yq47ZqM7IKsMRgwFgYDVQQLDA/thYzsiqTtirjsp4DsoJAxEjAQBgNVBAMMCWFhLTQyMjA2MjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMxaKJAJp+gH8pzR8HfxnhZRBHDVqXL7qsRPZWzbfIVlTC3DZ7VD/wVWqepr/7+qihjp2faqbSDJmhndBj0LnMscwgVtToJvkoKh5MxOiu1pDfIr+m/M/GCuGEtWXAZrDFZlR0Z0KIs6x0qGl35jWm+PCRiUcl4LMJMj8PIArdBB15gKZwl7akCrhlRnz9S2fSwa4ct5Hf7wbX3NC+EIKS1Wn8uhhKHpCVJCIVhdFAjXpLzoFmuGk4dtghry26fScGa9e7V0AwWmx+XLJtTVKWA2yp7L+pBLFNCMQIoMAxuGKIO0be2XNX12bywnXzc6NuRHi/+talUJTuhMG2HiQLkCAwEAAaOCAjwwggI4MIGTBgNVHSMEgYswgYiAFPFwqa9vz52LrIGFzBb0fNmFXAzEoW2kazBpMQswCQYDVQQGEwJLUjENMAsGA1UECgwES0lTQTEuMCwGA1UECwwlS29yZWEgQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkgQ2VudHJhbDEbMBkGA1UEAwwSS2lzYSBUZXN0IFJvb3RDQSA3ggEFMB0GA1UdDgQWBBSW+2gdXi9hzN5mxRUnZZbsZgMezTAOBgNVHQ8BAf8EBAMCBsAwewYDVR0gAQH/BHEwbzBtBgoqgxqMmkQFAQEJMF8wLQYIKwYBBQUHAgEWIWh0dHA6Ly93d3cuc2lnbmtvcmVhLmNvbS9jcHMuaHRtbDAuBggrBgEFBQcCAjAiHiDHdAAgx3jJncEcACDC3NXYxqkAIMd4yZ3BHMeFssiy5DBhBgNVHREEWjBYoFYGCSqDGoyaRAoBAaBJMEcMAmFhMEEwPwYKKoMajJpECgEBATAxMAsGCWCGSAFlAwQCAaAiBCBr+pY51qSpmZNsHYRpAGGqWQOUcmZ7KANYQiq+WFyzvjBVBgNVHR8ETjBMMEqgSKBGhkRsZGFwOi8vMjExLjE3NS44MS4xMDI6Njg5L291PWRwMTFwNyxvdT1BY2NyZWRpdGVkQ0Esbz1TaWduS29yZWEsYz1LUjA6BggrBgEFBQcBAQQuMCwwKgYIKwYBBQUHMAGGHmh0dHA6Ly8yMTEuMTc1LjgxLjEwMS9vY3NwLnBocDANBgkqhkiG9w0BAQsFAAOCAQEAYyF7b7dsgG5RrBwFoGEn2RHX8qeAn0X1sYdnBxvA/7UmZ8yiFPffzP3B7CkuqWahID3C9L0HmV+CSb9KbeMIZoqaBFziWl1DaTGVE1X1xeQ5oQIrh5mJ8O78LRWTwe8ebH6M8rVMPIYBbtmL4nu9UH3Vxk+D6m3AFHijz3qJ/EFB4I/qt0v68eP2Vmp60LUbis57YUFkPqUn1KyLYn+vVn6vHeBtUCutzbd8WoJJNuk+S2ww6QhHPv3Kz86aszQxykGh4w4mbTBFeV3v6/Ih3ygv+H+tFSApufV5K3pXiYkgGwvkoooSrX1AP5Yk6cmJNMM0wiUWkcMp8wwJvvJfAw==", "base64"),
+        signPri:  yettie.vest.signHelper.decodeString("MIIFEDAaBggqgxqMmkQBDzAOBAj3fXWtuYVLZQICBAAEggTwneymgx8uT4LxZHgJMuEZJ6euNV67rjRuduc87i+NklblM7HmfVCDzTzWy3JpYcHDvDADMhcezemBukRdVZfCsytWkyqUuDrJOUNFiAmrspCd2GzOZXi8rTEjxw3xEVIIJrLCE1oSokdmUOL1k5/cWsuKOLKSgOEtwICNLr4/jyn68GbshTpwx5QeydI4YtkRpZnMyNXbY3+2iJt/P/OJir1muPIPovk0Bz3Jmbfbsa8CTa6WCMLDf7BXbYQcZvYa6IlnBlIQQfiaLMIT+WCuA4dLeQzQQ/LCqcGCKGD413/5fsdoQC9o/LiQD7Vi+U8GFj86tsSGq2r3Zq3lhUl9IaIqK483cnMm3tUlW/JeNMfWhkl4DUCWH7QfWfV2QT7XjrBPaP3V1aIvo6LnAOVJlqFtRjO3p/vLmWmkjiy8Xv6bO7VRcR8m/VNgXUncE/08UgJfu6Pz3oR+zCj4erfOvEZ4GoVYGDKnrXvlN6d8gvCYw83NaNkLB1pvi0bjNyRVCo0evyI8/BBU7mH082J2Ace2xty9df0RBwQjCfJMLB6MettIUj7xyyXVWGaZSYqjzwdCsWYBUM8VmOzWipES3Pr6z6dQnChmhVOZVgQ4OZoQO+DfHyM4c/IvBKiQ5EmgFHpGGyjO1BIRJszTKDFkSlnkxYldl+TJJTrvKD0udelo4DOEFhPv9SZ70412qESiPBlwtR5tqi+SzvaDx6VxUn13RCYTvCIkuydGRAq0IFK5DDY6lcrd+TVHCQERUfdchFnzdvN0fCT6tOrZdPJf2CIjg517+BtTMfngIboaJ5begrVxHm6MPn/3Tq2da5TInXzBM8pWRhNcJnwZfnKMfNs/VtLKfi/ODI0yOj2x0pdnwuqWfTN919N7dX3bwKk0r2273ecly9H3vinLk2DDf4/avyqPFbFpxDsXXtadcX7BuPeVWt98OwpIEUXgeFN8DcMKDSYiHd6fZ2j6hGdysBgVtEC5pVb+VEhqlHbbUtvycX2jZ9Rndcxtjr0inuh99xrU3Tcj8qEY6vo9oqEppH26O+xSaVod4ZwVyvk99Vjzgxj7iDv6+Ss1sY5P8TLarZ32fMbR+V+eDTEGZz2I5ottflGisnmd/N/0XAmb5liqejgmvRifJOzBmDE11+jjIo4+6wso8e1ZlSytrLW6+n45H2ljnP3YZglCd6QEQXncxkuAfG/EHvIVThkBzT/sdmI5RUrxf92CuITa9HrK/SJWTggINwRTW6itIM4hPjjoG8dhTNkK7VVNhUfcypI0ViNCMm5neaBBkx0SHMHd5dxqhVLZkH6701WIY1HMC+dGgzXvztAC0HlbG+QQW9Kf2nNpZ1WOFjBWd0YNXeJwLmhxhke+4/Rc0czD6wH2AgPXYaJ8MT6ostEQG8M3zprW0dLifnCCRIiGtReO5ktjpeWs7xdHOfm6lXh5duum6NaC19vFNQm3wvpvrJMsdapgzaj5BBus0WWg33jH9Ux0iWUukxU960RvECvclcnfPYUNgBIvypwpYIJo9044c2sqjmeYm3SDCxjMkvVkbvqcdZUfcNe7ZSnJDttG7+JnF1vbv6y39Wrwj7XSWevMS8d4ej0xblGxmjC22E9sMyFEA6dlhCVGlOxcqMB5I2ScchdlY3CYoQzi6leyi9wBb60TVy1b1LyxrQg+bcJvvI0q6A==", "base64"),
+        kmCert: "",
+        kmPri: ""
+      }
+
+      var result = yettie.vest.pki.CertificateSet.fromBytes(bytes);
+      var resultCert = result.getCertificate();
+      console.log("가입자명 ::: " + parseDnString(resultCert.getSubject()));
+      console.log("발급일 ::: " + resultCert.getValidityFrom('YYYY-MM-DD'));
+      console.log("만료일 ::: " + resultCert.getValidityTo('YYYY-MM-DD'));
+      console.log("OID ::: " + resultCert.getPolicy());
+      // 해당하는 OID의 대한 정책등급은 app/library/policies.js에서 확인하시면 됩니다.
+
+      console.log("발급기관 정보 ::: " + getCommonName(resultCert.getIssuer()));
+      alert("인증서 정보 가져오기 성공");
+    }
+
+
+  // 입력받은 newPwd로 새로운 비밀번호 생성
+  function createNewPwd(oldPwd) {
+      option.oldPwd = oldPwd;
+      yettie.CreateNewPwd(option, function (res) {
+      if(res) {
+        document.getElementById('newPwd').value = res;
+      } else {
+        alert('비밀번호 생성 실패');
+      }
+    })
+  }
+
+  var callback = function (result) {
+    if ( result != true ) {
+      if(option.reusePin == 2) {
+          document.getElementById('pfxValue').value = result.pfx;
+          createNewPwd(yettie.vest.signHelper.decodeString(result.cp, option.encoding));
+      } else {
+        document.getElementById('pfxValue').value = result;
+      }
+    }
+
+    alert("pfx 내보내기 성공");
+  };
+
+  var errorcallback = function (error) {
+    // error.code == 14208 VID 검증 실패
+    // error.code == -9999 취소 버튼 이벤트
+      if(error.code == 14208) {
+        // idn 값이 null이거나 VID 검증이 실패 했을 경우에 대한 처리
+      } else if(error.code == -9999) {
+        // 취소 버튼 이벤트의 대한 처리
+      }
+      alert(error.msg);
+  };
+
+  function exportP12() {
+    vestSign.getConfig().serverStorage.hibiscus.use = false;
+    vestSign.getConfig().openCert.use = false;
+    option.returnType = "text"; // "text"는 PFX String으로 내보내기, 나머지는 file로 내보내기
+    if(option.returnType == "text") {
+      if(document.getElementById("reusePinCheck").checked == true) {
+        if(document.getElementById("idn").value != "") {
+          option.idn = document.getElementById("idn").value;
+        } 
+        
+        option.reusePin = 2; // 새로운 비밀번호 + PFX 내보내기 수행 Option
+      } else {
+        option.reusePin = 1; // PFX 내보내기 수행 Option
+      }
+    }
+    yettie.exportP12(option, callback, errorcallback);
+  };
+
+
+</SCRIPT>
+<br><br><br>
+<center>
+    <table border="1" align="center" width=50%>
+        <tr>
+          <td align="center" colspan="2"><br>
+              pfx 내보내기 결과<br><textarea rows='10' style="width:100%" id="pfxValue"></textarea><br><br>
+          </td>
+        </tr>
+        <tr>
+            <td align=center><br><br>
+            <INPUT type="checkbox" id="reusePinCheck">새로운 비밀번호 생성 후 내보내기<br><br>
+            IDN 입력: <input type="password" style="width: 300px" id="idn" /><br><br>
+            <input type=button onclick="exportP12()" value="내보내기" style="width:150px"><br><br><br>
+            </td>
+        </tr>
+        <tr>
+          <td align=center><br><br>
+          새로운 비밀번호 <br><input style="width: 300px" id="newPwd" readonly/> <br><br>
+          <input type="button" onclick="decryptPFX(document.getElementById('newPwd').value)" style="width: 150px"
+          value="PFX 복호화 테스트" />
+          <br><br>
+          기존 비밀번호(새로운 비밀번호 생성 안했을 시 인증서 정보를 가져오기를 위한 비밀번호) <br><input type="password" style="width: 300px" id="oldPwd"/> <br><br>
+          <input type="button" onclick="getCertificateInfo(document.getElementById('newPwd').value)" style="width: 230px"
+          value="인증서 정보 가져오기(PFX)" />
+          <br><br>
+          <input type="button" onclick="getCertificateInfoFromDer()" style="width: 230px"
+          value="인증서 정보 가져오기(DER,KEY)" />
+          <br><br>
+          </td>
+        </tr>
+    </table>
+</center>
